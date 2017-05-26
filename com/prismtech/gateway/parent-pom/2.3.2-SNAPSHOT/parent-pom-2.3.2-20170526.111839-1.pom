@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.prismtech.gateway</groupId>
+    <artifactId>parent-pom</artifactId>
+    <packaging>pom</packaging>
+
+    <version>2.3.2-SNAPSHOT</version>
+
+    <name>Gateway parent POM</name>
+    <description>This is a parent POM with recommended dependencies for projects using Gateway.</description>
+    <url>http://www.prismtech.com</url>
+
+    
+    <distributionManagement>
+      <repository>
+        <id>internal.repo</id>
+        <name>Temporary Staging Repository</name>
+        <url>file://${project.build.directory}/mvn-repo</url>
+      </repository>
+    </distributionManagement>
+
+    <repositories>
+        <!-- Repository for Fuse Mediation Router -->
+        <!-- (supported version of Apache Camel)  -->
+        <repository>
+            <id>release.fusesource.org</id>
+            <name>FuseSource Release Repository</name>
+            <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository> 
+        <!-- Repository for Restlet -->
+        <repository>
+            <id>noelios-restlet-repo</id>
+            <url>http://maven.restlet.org</url>
+        </repository>
+        <!-- Repository for Gson -->
+        <repository>
+            <id>gson</id>
+            <url>http://google-gson.googlecode.com/svn/mavenrepo</url>
+        </repository>
+        <!-- Repository for Camel Esper component -->
+        <repository>
+            <id>camel-extra-release</id>
+            <url>http://camel-extra.googlecode.com/svn/maven2/releases</url>
+        </repository>
+        <!-- Repository for some Camel Esper component dependencies -->
+        <repository>
+            <id>ow2</id>
+            <url>http://maven.ow2.org/maven2</url>
+        </repository>
+
+    <repository>
+      <id>essai-mvn-repo</id>
+      <url>https://raw.github.com/jean-marline/essai/mvn-repo/</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <!-- Repository for Fuse Mediation Router -->
+        <!-- (supported version of Apache Camel) -->
+        <pluginRepository>
+            <id>release.fusesource.org</id>
+            <name>FuseSource Release Repository</name>
+            <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Recommended versions of dependencies -->
+
+        <!-- maven -->
+        <maven-core-version>3.3.9</maven-core-version>
+        <maven-project-version>3.0-alpha-2</maven-project-version>
+        <maven-compiler-plugin-version>3.5.1</maven-compiler-plugin-version>
+        <maven-install-plugin-version>2.5.2</maven-install-plugin-version>
+        <maven-resources-plugin-version>3.0.1</maven-resources-plugin-version>
+
+        <!-- for Gateway itself -->
+        <cafe-version>2.3.3-SNAPSHOT</cafe-version>
+        <opensplice-dds-version>6.7.0</opensplice-dds-version>
+        <camel-version>2.19.0</camel-version> 
+        <commons-io-version>2.5</commons-io-version>
+        <javax-mail-version>1.5.0-b01</javax-mail-version>
+        <build-helper-maven-plugin-version>1.12</build-helper-maven-plugin-version>
+
+        <!-- for Gateway examples -->
+        <slf4j-version>1.7.21</slf4j-version>
+        <activemq-version>5.7.0.fuse-71-047</activemq-version>
+        <gson-version>2.7</gson-version>
+        <restlet-version>1.1.10</restlet-version>
+        <cxf-version>2.6.0.redhat-60060</cxf-version>
+        <dojo-version>1.6.1</dojo-version>
+        <maven-exec-plugin-version>1.5.0</maven-exec-plugin-version>
+        <maven-scala-plugin-version>2.15.2</maven-scala-plugin-version>
+        <scala-major-version>2.11</scala-major-version>
+        <scala-version>2.11.8</scala-version>
+        <scala-xml-version>1.0.5</scala-xml-version>
+        <camel-esper-version>2.15.0</camel-esper-version>
+	
+        <idlj-maven-plugin-version>1.1.1</idlj-maven-plugin-version>
+        <groovy-version>1.8.9</groovy-version>
+        <gmaven-plugin-version>1.5</gmaven-plugin-version>
+        <gmaven-provider-version>1.8</gmaven-provider-version>
+
+        <!-- for Gateway internal tests -->
+        <maven-surefire-plugin-version>2.17</maven-surefire-plugin-version>
+        <maven-plugin-testing-version>3.3.0</maven-plugin-testing-version>
+        <junit-version>4.12</junit-version>
+        <logback-version>1.1.7</logback-version>
+
+        <!-- for internal purpose (plugins for Gateway construction) -->
+        <maven-java-formatter-plugin-version>0.4</maven-java-formatter-plugin-version>
+  
+	<!-- github server corresponds to entry in ~/.m2/settings.xml -->
+        <github.global.server>github</github.global.server>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- OpenSpliceDDS dependency -->
+            <dependency>
+                <groupId>org.opensplice</groupId>
+                <artifactId>dcpssaj</artifactId>
+                <scope>system</scope>
+                <version>${opensplice-dds-version}</version>
+                <!-- NOTE: leading '/' in following <systemPath> is a workaround 
+                    for a Maven strange issue: without this '/' compilation of an individual 
+                    example leads to an error message complaining that opensplice-idl-plugin's 
+                    POM is not valid since managed dependency org.opensplice.dcpssaj has a non-absolute 
+                    systemPath Drawback: this probably works only on Unix... -->
+                <systemPath>/${env.OSPL_HOME}/jar/dcpssaj.jar</systemPath>
+            </dependency>
+
+            <!-- Vortex Cafe's DDSI dependency -->
+            <dependency>
+                <groupId>com.prismtech.cafe</groupId>
+                <artifactId>cafe-ddsi</artifactId>
+                <version>${cafe-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.prismtech.cafe</groupId>
+                <artifactId>cafe-dds</artifactId>
+                <version>${cafe-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.prismtech.cafe</groupId>
+                <artifactId>parent-pom</artifactId>
+                <type>pom</type>
+                <version>${cafe-version}</version>
+            </dependency>
+
+            <!-- Vortex Cafe's iShapes demo (for examples) -->
+            <dependency>
+                <groupId>com.prismtech.cafe.examples</groupId>
+                <artifactId>ishapes</artifactId>
+                <version>${cafe-version}</version>
+            </dependency>
+
+            <!-- Maven -->
+             <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-plugin-api</artifactId>
+                <version>${maven-core-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-project</artifactId>
+                <version>${maven-project-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-artifact</artifactId>
+                <version>${maven-core-version}</version>
+            </dependency>
+
+            <!-- Import global Camel POM, thus all Camel's artifacts -->
+            <!-- are referenced with the same version number         -->
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>apache-camel</artifactId>
+                <type>pom</type>
+                <scope>import</scope>
+                <version>${camel-version}</version>
+            </dependency>
+
+            <!-- Groovy  -->
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>${groovy-version}</version>
+            </dependency>
+
+            <!-- javax.mail -->
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${javax-mail-version}</version>
+            </dependency>
+
+            <!-- slf4j logging -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j-version}</version>
+            </dependency>
+
+            <!-- ActiveMQ -->
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-core</artifactId>
+                <version>${activemq-version}</version>
+            </dependency>
+
+            <!-- Gson: Java to Json conversion -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson-version}</version>
+            </dependency>
+
+            <!-- Restlet -->
+            <dependency>
+                <groupId>com.noelios.restlet</groupId>
+                <artifactId>com.noelios.restlet</artifactId>
+                <version>${restlet-version}</version>
+            </dependency>
+
+            <!-- Camel Esper component -->
+            <dependency>
+                <groupId>org.apache-extras.camel-extra</groupId>
+                <artifactId>camel-esper</artifactId>
+                <version>${camel-esper-version}</version>
+            </dependency>
+
+            <!-- - - - - - - - - - - - - -->
+            <!-- Gateway internal tests -->
+            <!-- - - - - - - - - - - - - -->
+
+            <!-- JUnit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit-version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Maven plugin tests -->
+            <dependency>
+                <groupId>org.apache.maven.plugin-testing</groupId>
+                <artifactId>maven-plugin-testing-harness</artifactId>
+                <version>${maven-plugin-testing-version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Camel tests -->
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-core</artifactId>
+                <version>${camel-version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- logback (slf4j compatible backend) -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback-version}</version>
+                <scope>test</scope>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+          <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.8.1</version>
+        <configuration>
+          <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
+        <version>0.12</version>
+        <configuration>
+          <message>Maven artifacts for ${project.version}</message>
+          <!-- git commit message -->
+          <noJekyll>true</noJekyll>
+          <!-- disable webpage processing -->
+          <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+          <!-- matches distribution management repository url above -->
+          <branch>refs/heads/mvn-repo</branch>
+          <!-- remote branch name -->
+          <includes>
+            <include>**/*</include>
+          </includes>
+          <repositoryName>essai</repositoryName>
+          <!-- github repo name -->
+          <repositoryOwner>jean-marline</repositoryOwner>
+          <!-- github username  -->
+	  <merge>true</true>
+        </configuration>
+        <executions>
+          <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+          <execution>
+            <goals>
+              <goal>site</goal>
+            </goals>
+            <phase>deploy</phase>
+          </execution>
+        </executions>
+          </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+
+                <!-- Configure Maven to target Java 1.7 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin-version}</version>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                    </configuration>
+                </plugin>
+
+                <!-- Maven resources plugin -->
+                <plugin>
+                   <groupId>org.apache.maven.plugins</groupId>
+                   <artifactId>maven-resources-plugin</artifactId>
+                   <version>${maven-resources-plugin-version}</version>
+                </plugin>
+
+                <!-- Maven exec plugin (for examples execution) -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${maven-exec-plugin-version}</version>
+                </plugin>
+
+                <!-- Maven Scala plugin -->
+                <plugin>
+                    <groupId>org.scala-tools</groupId>
+                    <artifactId>maven-scala-plugin</artifactId>
+                    <version>${maven-scala-plugin-version}</version>
+                </plugin>
+
+                <!-- Maven Build Helper plugin -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${build-helper-maven-plugin-version}</version>
+                </plugin>
+
+                <!-- Maven Groovy plugin -->
+                <plugin>
+                    <groupId>org.codehaus.gmaven</groupId>
+                    <artifactId>gmaven-plugin</artifactId>
+                    <version>${gmaven-plugin-version}</version>
+                    <!-- force GMaven plugin to use the Groovy version we want -->
+                    <configuration>
+                        <providerSelection>${gmaven-provider-version}</providerSelection>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.codehaus.gmaven.runtime</groupId>
+                            <artifactId>gmaven-runtime-${gmaven-provider-version}</artifactId>
+                            <version>${gmaven-plugin-version}</version>
+                            <exclusions>
+                                <exclusion>
+                                    <groupId>org.codehaus.groovy</groupId>
+                                    <artifactId>groovy-all</artifactId>
+                                </exclusion>
+                            </exclusions>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.codehaus.groovy</groupId>
+                            <artifactId>groovy-all</artifactId>
+                            <version>${groovy-version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+		
+                <!-- Java Code Formatter -->
+                <plugin>
+                   <groupId>com.googlecode.maven-java-formatter-plugin</groupId>
+                   <artifactId>maven-java-formatter-plugin</artifactId>
+                   <version>${maven-java-formatter-plugin-version}</version>
+                   <configuration>
+                      <configFile>${basedir}/../src/etc/PrismtechVortexJavaFormatter.xml</configFile>
+                      <lineEnding>LF</lineEnding>
+                   </configuration>
+                </plugin>
+	    
+                <!-- Sun's JDK IDL compilation plugin -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>idlj-maven-plugin</artifactId>
+                    <version>${idlj-maven-plugin-version}</version>
+                </plugin>
+
+                <!-- For Eclipse's Maven plugin "m2e", we have to tell him to     -->
+                <!-- execute opensplice-idl-plugin as part of Eclipse workspace   -->
+                <!-- full or incremental build.                                   -->
+                <!-- See http://wiki.eclipse.org/M2E_plugin_execution_not_covered -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>com.prismtech.gateway</groupId>
+                                        <artifactId>opensplice-idl-plugin</artifactId>
+                                        <versionRange>[1.0.0,)</versionRange>
+                                        <goals>
+                                            <goal>idl-compile</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
