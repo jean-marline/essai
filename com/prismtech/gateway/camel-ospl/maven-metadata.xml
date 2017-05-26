@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>com.prismtech.gateway</groupId>
-  <artifactId>parent-pom</artifactId>
+  <artifactId>camel-ospl</artifactId>
   <versioning>
     <versions>
       <version>2.3.2-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20170526111839</lastUpdated>
+    <lastUpdated>20170526112013</lastUpdated>
   </versioning>
 </metadata>
