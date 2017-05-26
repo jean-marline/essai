@@ -22,25 +22,23 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-        <groupId>com.prismtech.gateway</groupId>
+		<groupId>com.prismtech.gateway</groupId>
 		<artifactId>examples-pom</artifactId>
 		<version>2.3.2-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.prismtech.gateway.examples</groupId>
-	<artifactId>camel-messages-mode</artifactId>
-
-	<name>Gateway example: camel-messages-mode</name>
-    <url>http://www.prismtech.com</url>
+	<artifactId>chatroom</artifactId>
+	<name>Gateway example: chatroom</name>
 
 	<dependencies>
-		<!-- Camel OpenSpliceDDS endpoint -->
+		<!-- Camel OpensSpliceDDS endpoint -->
 		<dependency>
 			<groupId>com.prismtech.gateway</groupId>
 			<artifactId>camel-ospl</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- OpenSpliceDDS (requires explicit dependency since it's system scope) -->
+		<!-- OpensSpliceDDS (requires explicit dependency since it's system scope) -->
 		<dependency>
 			<groupId>org.opensplice</groupId>
 			<artifactId>dcpssaj</artifactId>
@@ -55,10 +53,33 @@
 
 	<build>
 		<plugins>
+
+            <!-- OpenSplice IDL compilation plugin -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
+				<groupId>com.prismtech.gateway</groupId>
+				<artifactId>opensplice-idl-plugin</artifactId>
+				<version>${project.version}</version>
+				<executions>
+					<execution>
+						<id>generate-cameldds-idl</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>idl-compile</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
+
+			<!-- exec plugin: specify mainClass -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.prismtech.gateway.examples.chatroom.DDSChatDemo</mainClass>
+				</configuration>
+			</plugin>
+            
 		</plugins>
 	</build>
+
 </project>
